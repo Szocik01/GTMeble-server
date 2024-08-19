@@ -4,7 +4,7 @@ const isAuth = (req,res,next)=>{
     const authToken=req.get("Authorization");
     if(!authToken)
     {
-        const error = new Error("Not authorized");
+        const error = new Error("Not authenticated");
         error.errorCode=401;
         throw error;
     }
@@ -20,7 +20,7 @@ const isAuth = (req,res,next)=>{
     }
     if(!decodedToken || decodedToken.permission!=="admin")
     {
-        const error =  new Error("Not authenticated");
+        const error =  new Error("Not authorized");
         error.statusCode=401;
         throw error;
     }

@@ -32,7 +32,7 @@ exports.login = (req, res, next) => {
         "testtest2137",
         { expiresIn: "1h" }
       );
-      res.status(200).json({ token: token, userId: userData.id });
+      res.status(200).json({ token: token, permission: userData.permission });
     })
     .catch((error) => {
       if (!error.statusCode) {
@@ -45,6 +45,7 @@ exports.login = (req, res, next) => {
 exports.signup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
+
   if (!email.includes("@") || !email.includes(".")) {
     const error = new Error("Invalid email");
     error.statusCode = 422;
@@ -66,7 +67,7 @@ exports.signup = (req, res, next) => {
       return bcrypt.hash(password, 12);
     })
     .then((hashedPassword) => {
-      const user = new User(email, hashedPassword, "admin");
+      const user = new User(email, hashedPassword, "user");
       return user.addUser();
     })
     .then((result) => {

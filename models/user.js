@@ -16,7 +16,7 @@ class User {
 
   static getUserByEmail(email) {
     return db.execute(
-      "select * from users join permissions on users.idPermissions = permissions.id where email = ?",
+      "select users.id, email, password, permission from users join permissions on users.idPermissions = permissions.id where email = ?",
       [email]
     );
   }
