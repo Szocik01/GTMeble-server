@@ -3,10 +3,10 @@ const router = express.Router();
 const serviceControllers = require('../controllers/services');
 const isAuthMiddleware = require('../middlewares/isAuth');
 
-router.get('/service',serviceControllers.getService);
+router.get('/api/service',serviceControllers.getService);
 
-router.post('/service/add', isAuthMiddleware ,serviceControllers.addService);
+router.post('/api/service/add', isAuthMiddleware ,serviceControllers.addService);
 
-router.put('/service/edit', isAuthMiddleware,serviceControllers.editService);
+router.put('/api/service/edit', isAuthMiddleware,serviceControllers.editService);
 
 module.exports=router;
