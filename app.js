@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 app.use("/images", express.static(path.join(__dirname, "images")));
 
-app.use("/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 app.use(postsRoutes);
 app.use(servicesRoutes);
 
