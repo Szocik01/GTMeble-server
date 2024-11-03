@@ -9,8 +9,7 @@ const clearImages = (
   ...filePaths
 ) => {
   const formattedFilePaths = filePaths.map((filePath) => {
-    console.log(filePath.include("/var/"))
-    return filePath.include("/var/") ? filePath : path.join(__dirname, "..", filePath);
+    return filePath.includes("/var/") ? filePath : path.join(__dirname, "..", filePath);
   });
 
   console.log("filePaths", filePaths);
