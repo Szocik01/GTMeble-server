@@ -8,7 +8,9 @@ const clearImages = (
   checkAccessToFiles,
   ...filePaths
 ) => {
-  const formattedFilePaths = filePaths;
+  const formattedFilePaths = filePaths.map((filePath) => {
+    return filePath.include("/var/") ? filePath : path.join(__dirname, "..", filePath);
+  });
 
   if (deleteChildrenPhotos) {
     filePaths.forEach((filePath) => {

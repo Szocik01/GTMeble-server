@@ -6,7 +6,7 @@ const {sizeExtentionMap} = require("../utils/constants");
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join("images", "postsGallery"));
+    cb(null, path.join(__dirname,"..","images", "postsGallery"));
   },
   filename: (req, file, cb) => {
     cb(null, uuid.v4() + file.originalname);
@@ -86,6 +86,9 @@ const processPhoto = (req, res, next) => {
         return promiseFunction();
       })
     ).finally(() => {
+      req.files.forEach((file) => {
+        file.path = file.path.split("/").slice(-3);
+      })
       next();
     });
   });
