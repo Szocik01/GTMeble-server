@@ -12,8 +12,6 @@ const clearImages = (
     return filePath.includes("/var/") ? filePath : path.join(__dirname, "..", filePath);
   });
 
-  console.log("filePaths", filePaths);
-
   if (deleteChildrenPhotos) {
     filePaths.forEach((filePath) => {
       const filePathObject = path.parse(filePath);
@@ -32,6 +30,7 @@ const clearImages = (
         )
       );
     });
+    console.log(formattedFilePaths);
   }
   return Promise.all(
     checkAccessToFiles === true
