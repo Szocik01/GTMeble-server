@@ -87,7 +87,7 @@ const processPhoto = (req, res, next) => {
       })
     ).finally(() => {
       req.files.forEach((file) => {
-        file.path = file.path.split("/").slice(-3);
+        file.path = file.path.split("/").slice(-3).join("/");
       })
       next();
     });
