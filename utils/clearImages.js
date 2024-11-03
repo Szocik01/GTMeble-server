@@ -8,8 +8,8 @@ const clearImages = (
   checkAccessToFiles,
   ...filePaths
 ) => {
-  console.log("filePaths", filePaths);
   const formattedFilePaths = filePaths.map((filePath) => {
+    console.log("filePaths", filePath);
     return filePath.include("/var/") ? filePath : path.join(__dirname, "..", filePath);
   });
 
