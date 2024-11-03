@@ -9,9 +9,11 @@ const clearImages = (
   ...filePaths
 ) => {
   const formattedFilePaths = filePaths.map((filePath) => {
-    console.log("filePaths", filePath);
+    console.log(filePath.include("/var/"))
     return filePath.include("/var/") ? filePath : path.join(__dirname, "..", filePath);
   });
+
+  console.log("filePaths", filePaths);
 
   if (deleteChildrenPhotos) {
     filePaths.forEach((filePath) => {
