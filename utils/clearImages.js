@@ -34,7 +34,6 @@ const clearImages = (
       ? filePath
       : path.join(__dirname, "..", filePath);
   });
-  console.log(formattedFilePaths);
   return Promise.all(
     checkAccessToFiles === true
       ? formattedFilePaths.map((filePath) => {
