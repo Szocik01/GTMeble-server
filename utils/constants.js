@@ -1,7 +1,7 @@
 module.exports.sizeExtentionMap = [
   {
     name: "lg",
-    factor: 0.65,
+    factor: 0.60,
   },
   {
     name: "sm",

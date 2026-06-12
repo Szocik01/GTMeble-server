@@ -1,5 +1,6 @@
 const Post = require("../models/posts");
 const clearImages = require("../utils/clearImages");
+const path = require("path");
 
 exports.getAllPosts = (req, res, next) => {
   const postsResponse = {};
@@ -88,7 +89,7 @@ exports.addPost = (req, res, next) => {
   const description = req.body.description?.trim();
   const category = req.body.category?.trim();
   const imageUrls = req.files.map((item) => {
-    return item.path.replace(/\\/g, "/");
+    return path.join("images", 'postsGallery', item.filename);
   });
 
   if (!title || !description || !category) {
@@ -142,7 +143,7 @@ exports.editPost = async (req, res, next) => {
 
   if (req.files) {
     imageUrls = req.files.map((item) => {
-      return item.path.replace(/\\/g, "/");
+    return path.join("images", 'postsGallery', item.filename);
     });
   }
 
